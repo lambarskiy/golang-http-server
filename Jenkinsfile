@@ -5,7 +5,7 @@ pipeline {
       steps {
         script {
           sh 'docker build -t golang-http-server:1.0 .'
-          sh 'docker image prune'
+          sh 'yes | docker image prune'
         }
       }
     }
