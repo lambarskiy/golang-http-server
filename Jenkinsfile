@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    CURRENT_BRANCH_NAME = "${env.BRANCH_NAME}"
-  }
   stages {
     stage('build') {
       steps {
@@ -16,7 +13,7 @@ pipeline {
         script {
           sh 'yes | docker container prune'
           sh 'yes | docker image prune'
-          sh 'echo $CURRENT_BRANCH_NAME > /var/tmp/branch.var'
+          sh 'echo $BRANCH_NAME > /var/tmp/branch.var'
         }
       }
     }
