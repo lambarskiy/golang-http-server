@@ -1,7 +1,4 @@
 pipeline {
-  environment {
-    BRANCH_NAME="${BRANCH_NAME}"
-  }
   agent any
   stages {
     stage('build') {
@@ -16,6 +13,13 @@ pipeline {
         script {
           sh 'yes | docker container prune'
           sh 'yes | docker image prune'
+        }
+      }
+    }
+    stage('set environmental variable') {
+      steps {
+        script {
+          sh 'set BRANCH_NAME=${BRANCH_NAME}'
         }
       }
     }
