@@ -18,7 +18,7 @@ pipeline {
     }
     stage('run ansible playbook') {
       steps {
-        dir("${PWD}") {
+        dir : '/home/ubuntu' {
           ansiblePlaybook([
             inventory   : 'hosts',
             playbook    : 'golang_container_run.yaml',
