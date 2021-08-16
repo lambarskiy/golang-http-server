@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    BRANCH_NAME=${BRANCH_NAME}
+    BRANCH_NAME="${BRANCH_NAME}"
   }
   agent any
   stages {
