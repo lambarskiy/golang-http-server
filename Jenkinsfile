@@ -16,5 +16,19 @@ pipeline {
         }
       }
     }
+    stage('run ansible playbook') {
+      steps {
+        dir("${PWD}") {
+          ansiblePlaybook([
+            inventory   : 'hosts',
+            playbook    : 'golang_container_run.yaml',
+            installation: 'ansible',
+            colorized   : true,
+            extraVars   : [
+              pass_branch_name: env.BRANCH_NAME,
+            ]
+          ])
+        }
+      }
   }
 }
