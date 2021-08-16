@@ -13,7 +13,7 @@ pipeline {
         script {
           sh 'yes | docker container prune'
           sh 'yes | docker image prune'
-          sh 'export $BRANCH_NAME'
+          sh 'sudo export $BRANCH_NAME'
         }
       }
     }
