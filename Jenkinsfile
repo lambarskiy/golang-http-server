@@ -1,6 +1,14 @@
 pipeline {
   agent any
   stages {
+    stage('delete last image') {
+      steps {
+        script {
+          sh 'printenv'
+        }
+      }
+    }
+  stages {
     stage('build') {
       steps {
         script {
@@ -13,7 +21,7 @@ pipeline {
         script {
           sh 'yes | docker container prune'
           sh 'yes | docker image prune'
-          sh 'sudo export $BRANCH_NAME'
+          sh 'export $BRANCH_NAME'
         }
       }
     }
