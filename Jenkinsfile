@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+    ENV_NAME = "${env.BRANCH_NAME}"
+  }
   stages {
     stage('build') {
       steps {
