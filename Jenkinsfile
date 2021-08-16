@@ -1,10 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage('delete last image') {
+    stage('stop last container and delete last image') {
       steps {
         script {
-          sh 'printenv'
+          sh 'docker ps -a | grep golang-http-server | awk "{print $3}" | xargs -r docker stop'
+          sh 'docker images | grep golang-http-server | awk "{print $3}" | xargs -r docker rmi'
         }
       }
     }
@@ -18,7 +19,6 @@ pipeline {
     stage('cleanup') {
       steps {
         script {
-          sh 'yes | docker container prune'
           sh 'yes | docker image prune'
           sh 'export $BRANCH_NAME'
         }
