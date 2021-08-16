@@ -16,5 +16,8 @@ pipeline {
         }
       }
     }
+   environment {
+    BRANCH_NAME='${BRANCH_NAME}'
+  }
   }
 }
