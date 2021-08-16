@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    CURRENT_BRANCH_NAME = ${BRANCH_NAME}
+    CURRENT_BRANCH_NAME = "${env.BRANCH_NAME}"
   }
   stages {
     stage('build') {
