@@ -16,7 +16,7 @@ pipeline {
         script {
           sh 'yes | docker container prune'
           sh 'yes | docker image prune'
-          sh 'echo $CURRENT_BRANCH_NAME > /home/ubuntu/file.txt'
+          sh 'echo $CURRENT_BRANCH_NAME > /home/ubuntu/branch.var'
         }
       }
     }
