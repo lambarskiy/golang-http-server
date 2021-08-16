@@ -13,7 +13,7 @@ pipeline {
         script {
           sh 'yes | docker container prune'
           sh 'yes | docker image prune'
-          sh 'echo $BRANCH_NAME > /var/tmp/branch.var'
+          sh 'echo $BRANCH_NAME > /etc/branch.cfg'
         }
       }
     }
