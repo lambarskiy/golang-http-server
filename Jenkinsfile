@@ -16,12 +16,5 @@ pipeline {
         }
       }
     }
-    stage('set environmental variable') {
-      steps {
-        script {
-          sh 'set BRANCH_NAME=${BRANCH_NAME}'
-        }
-      }
-    }
   }
 }
