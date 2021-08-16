@@ -16,7 +16,7 @@ pipeline {
         }
       }
     }
-  environment {
+   environment {
     BRANCH_NAME='${BRANCH_NAME}'
   }
   }
