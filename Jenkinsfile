@@ -17,7 +17,7 @@ pipeline {
             echo "No running container"
           }
           try { 
-            ssh 'docker images | grep golang-http-server | xargs -n 2 -r docker rmi'
+            ssh 'docker images | grep golang-http-server | xargs -n 3 -r docker rmi'
           } 
           catch (err) {
             echo "No latest image"
