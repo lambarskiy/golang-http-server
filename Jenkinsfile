@@ -17,7 +17,7 @@ pipeline {
             echo "No running container"
           }
           try { 
-            sh 'docker images | grep golang-http-server:$(BRANCH_NAME) | docker rmi '
+            sh 'docker images | grep golang- | xargs -n 2 -L 1 echo | grep golang- | tr " " ':' | xargs docker rmi '
           } 
           catch (err) {
             echo "No latest image"
