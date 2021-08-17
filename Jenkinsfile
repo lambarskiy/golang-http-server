@@ -5,6 +5,7 @@ pipeline {
       steps {
         script {
           sh 'docker ps -a | grep golang-http-server | xargs -r docker stop'
+          sh 'docker ps -a | grep golang-http-server | xargs -r docker rm'
           sh 'docker images | grep golang-http-server | xargs -r docker rmi'
         }
       }
