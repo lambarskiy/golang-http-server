@@ -1,4 +1,7 @@
 pipeline {
+  options { 
+    disableConcurrentBuilds() 
+  }
   agent any
   stages {
     stage('stop last container and delete last image') {
@@ -17,7 +20,7 @@ pipeline {
             echo "No running container"
           }
           try { 
-            ssh 'docker images | grep golang-http-server | xargs -n 2 -r docker rmi'
+            sh 'docker images | grep golang- | xargs -n 2  echo | grep golang- | tr " " ':' | xargs docker rmi '
           } 
           catch (err) {
             echo "No latest image"
@@ -36,6 +39,7 @@ pipeline {
       steps {
         script {
           sh 'yes | docker image prune'
+          sh 'yes | docker container prune'
         }
       }
     }
