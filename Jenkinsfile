@@ -4,9 +4,9 @@ pipeline {
     stage('stop last container and delete last image') {
       steps {
         script {
-          sh 'docker ps -a | grep golang-http-server | xargs -r docker stop'
-          sh 'docker ps -a | grep golang-http-server | xargs -r docker rm'
-          sh 'docker images | grep golang-http-server | xargs -r docker rmi'
+          sh 'docker ps -a | grep golang-http-server | xargs -r docker stop 2> /dev/null'
+          sh 'docker ps -a | grep golang-http-server | xargs -r docker rm 2> /dev/null'
+          sh 'docker images | grep golang-http-server | xargs -r docker rmi 2> /dev/null'
         }
       }
     }
