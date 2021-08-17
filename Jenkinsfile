@@ -36,6 +36,7 @@ pipeline {
       steps {
         script {
           sh 'yes | docker image prune'
+          sh 'yes | docker container prune'
         }
       }
     }
